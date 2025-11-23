@@ -49,20 +49,6 @@ return {
       -- Setup alpha
       alpha.setup(dashboard.opts)
 
-      -- Optional: close alpha buffer when opening another file
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "AlphaReady",
-        callback = function()
-          vim.api.nvim_create_autocmd("BufEnter", {
-            once = true,
-            callback = function()
-              if vim.bo.filetype ~= "alpha" then
-                pcall(vim.cmd.bdelete, 1)
-              end
-            end,
-          })
-        end,
-      })
     end,
   },
 }
